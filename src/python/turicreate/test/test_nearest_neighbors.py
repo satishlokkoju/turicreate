@@ -12,7 +12,7 @@ import copy
 import turicreate as tc
 from turicreate.toolkits._main import ToolkitError
 from turicreate.toolkits._private_utils import _validate_lists
-from pandas.util.testing import assert_frame_equal
+from pandas.testing import assert_frame_equal
 from . import util
 import array
 import string

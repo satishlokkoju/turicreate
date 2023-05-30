@@ -229,7 +229,7 @@ class TreeEnsembleBase(object):
             "LeafNode"
         )
 
-        if not isinstance(values, _collections.Iterable):
+        if not isinstance(values, _collections.abc.Iterable):
             values = [values]
 
         if relative_hit_rate is not None:

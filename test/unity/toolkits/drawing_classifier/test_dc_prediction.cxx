@@ -109,7 +109,7 @@ gl_sframe set_up_perform_inference(
     std::vector<float> buffer(num_of_classes * batch_size);
 
     std::default_random_engine eng;
-    std::uniform_int_distribution<float> distribution(0, 20);
+    std::uniform_real_distribution<float> distribution(0, 20);
 
     gl_sframe_writer writer({PRED_NAME}, {flex_type_enum::VECTOR},
                             /* num_segments */ 1);

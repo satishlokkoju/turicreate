@@ -11,7 +11,7 @@ from ..data_structures.sframe import SFrame
 from . import util
 
 import pandas as pd
-from pandas.util.testing import assert_frame_equal
+from pandas.testing import assert_frame_equal
 import numpy as np
 import unittest
 import tempfile

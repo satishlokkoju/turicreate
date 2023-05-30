@@ -26,7 +26,7 @@ from .. import _sys_util
 from .. import util
 from .. import SGraph, SFrame, load_sgraph, load_model, load_sframe
 from turicreate.toolkits._model import Model
-from pandas.util.testing import assert_frame_equal
+from pandas.testing import assert_frame_equal
 
 restricted_place = "/root"
 if sys.platform == "win32":

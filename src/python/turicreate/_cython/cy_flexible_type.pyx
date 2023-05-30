@@ -458,7 +458,7 @@ cdef int _secondary_get_translation_code(type t, object v = None):
         return FT_BUFFER_TYPE
 
     # If it's iterable, then it can be cast to a list.
-    if isinstance(v, collections.Iterable):
+    if isinstance(v, collections.abc.Iterable):
         _code_by_type_lookup[<object_ptr>t] = FT_LIST_TYPE + FT_SAFE
         return FT_LIST_TYPE + FT_SAFE
 
@@ -1425,7 +1425,7 @@ cdef inline bint _tr_buffer_to_flex_vec(flex_vec& retv, object v):
 
     if HAS_NUMPY and type(v) is np_ndarray:
         dt = v.dtype
-        if dt == np.bool:
+        if dt == bool:
             v = np.asarray(v, dtype = np.uint8)
             if not __try_buffer_type_vec(retv, v, <uint8_t>(0)):
                 assert False
@@ -2021,7 +2021,7 @@ cdef inline flex_type_enum tr_buffer_to_flex_list(
         return tr_listlike_to_flex_list(retl, object_buffer, common_type, ignore_translation_errors)
 
     # Numpy array that is not an object array?
-    if isinstance(v, collections.Iterable) or (HAS_NUMPY and type(v) is np_ndarray):
+    if isinstance(v, collections.abc.Iterable) or (HAS_NUMPY and type(v) is np_ndarray):
         return tr_listlike_to_flex_list(retl, list(v), common_type, ignore_translation_errors)
 
     # Error if there are no more options.

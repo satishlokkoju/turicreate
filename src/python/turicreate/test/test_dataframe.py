@@ -10,7 +10,7 @@ import unittest
 import pandas
 import array
 from .. import SFrame
-from pandas.util.testing import assert_frame_equal
+from pandas.testing import assert_frame_equal
 from sys import version_info
 
 import pytest

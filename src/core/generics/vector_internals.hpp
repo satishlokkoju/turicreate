@@ -126,7 +126,7 @@ static inline void _destroy_range(T* start, T* end) {
 template <typename T>
 GL_HOT_INLINE
 void uninitialized_move(T* first, T* last, T* dest) {
-  memmove(dest, first, sizeof(T) * (last - first) );
+  memmove(reinterpret_cast<void*>(dest), first, sizeof(T) * (last - first) );
 }
 
 template <typename T>
@@ -134,7 +134,7 @@ GL_HOT_INLINE
 void uninitialized_move_backward(T* first, T* last, T* dest_last) {
 
   size_t n = last - first;
-  memmove(dest_last - n, first, sizeof(T) * n);
+  memmove(reinterpret_cast<void*>(dest_last - n), first, sizeof(T) * n);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -144,7 +144,7 @@ GL_HOT_INLINE
 void uninitialized_construct(T* first, const T* last) {
 
   if(std::is_trivial<T>::value) {
-    memset(first, 0, (last - first) * sizeof(T));
+    memset(reinterpret_cast<void*>(first), 0, (last - first) * sizeof(T));
   } else {
     for(;first != last; ++first) {
       new (first) T ();
@@ -223,7 +223,7 @@ static inline void _extend_range(_vstruct<T>*& info, size_t n, bool extend_extra
     if(UNLIKELY(info == nullptr)) throw std::bad_alloc();
     info->size = 0;
   } else {
-    info = (_vstruct<T>*) realloc(info, sizeof(_vstruct<T>) + new_capacity*sizeof(T));
+    info = (_vstruct<T>*) realloc(reinterpret_cast<void*>(info), sizeof(_vstruct<T>) + new_capacity*sizeof(T));
     if(UNLIKELY(info == nullptr)) throw std::bad_alloc();
   }
 

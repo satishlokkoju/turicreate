@@ -63,7 +63,7 @@ struct random_result_generator {
  private:
   flex_vec result_;
   std::default_random_engine eng_;
-  std::uniform_int_distribution<float> dist_{0, 35};
+  std::uniform_real_distribution<float> dist_{0, 35};
 };
 
 // always predict the first label regardless of the input.

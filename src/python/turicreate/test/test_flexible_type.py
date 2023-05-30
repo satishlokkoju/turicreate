@@ -53,7 +53,7 @@ special_types = set()
 
 IntegerValue = [int(0), long(1)] + [
     _dt(0)
-    for _dt in (np.sctypes["int"] + np.sctypes["uint"] + [np.bool, bool, np.bool_])
+    for _dt in (np.sctypes["int"] + np.sctypes["uint"] + [bool, np.bool_])
 ]
 special_types.add(id(IntegerValue))
 
@@ -68,12 +68,12 @@ StringValue = (
     [str("bork"), unicode("bork"), b"bork", b""]
     + [
         _dt("bork")
-        for _dt in [np.unicode, np.unicode_, str, unicode, np.str, np.str_, np.string_]
+        for _dt in [np.unicode_, str, unicode,np.str_, np.string_]
     ]
     + [str(""), unicode("")]
     + [
         _dt("")
-        for _dt in [np.unicode, np.unicode_, str, unicode, np.str, np.str_, np.string_]
+        for _dt in [np.unicode_, str, unicode, np.str_, np.string_]
     ]
 )
 

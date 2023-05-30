@@ -12,7 +12,7 @@ import shutil
 import math
 import string
 import numpy as np
-from pandas.util.testing import assert_frame_equal
+from pandas.testing import assert_frame_equal
 from .. import SArray
 import turicreate as tc
 import sys

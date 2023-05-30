@@ -29,3 +29,8 @@ llvmlite==0.36.0; python_version == '3.9'
 ########## >=  #########
 
 pre-commit>=1.21.0
+
+
+
+###### pytest #####
+resampy

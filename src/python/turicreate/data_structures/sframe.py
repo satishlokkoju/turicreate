@@ -38,7 +38,7 @@ import numbers
 import sys
 import six
 import csv
-from collections import Iterable as _Iterable
+from collections.abc import Iterable as _Iterable
 
 __all__ = ["SFrame"]
 __LOGGER__ = _logging.getLogger(__name__)
